@@ -16,6 +16,9 @@ namespace OMS.Classes
         public string ElektricniElement { get; set; }
         public string OpisKvara { get; set; }
 
+
+        public Kvar() { }
+
         public Kvar(int id, string kvarId, DateTime vremeKreiranja, string status, string kratakOpis, string elektricniElement, string opisKvara)
         {
             Id = id;
@@ -26,6 +29,7 @@ namespace OMS.Classes
             ElektricniElement = elektricniElement;
             OpisKvara = opisKvara;
         }
+
 
         public override bool Equals(object? obj)
         {

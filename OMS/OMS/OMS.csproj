@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="21.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ParameterUtil\" />
+  </ItemGroup>
+
 </Project>
