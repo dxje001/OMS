@@ -10,7 +10,7 @@ namespace OMS.Connections
     {
         public static readonly string LOCAL_DATA_SOURCE = "//localhost:1521/xepdb1";
 
-        public static readonly string USER_ID = "DUSAN";
-        public static readonly string PASSWORD = "Slanina01";
+        public static readonly string USER_ID = "pr402020";
+        public static readonly string PASSWORD = "ftn";
     }
 }
