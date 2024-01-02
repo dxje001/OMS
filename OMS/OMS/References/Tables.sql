@@ -4,6 +4,17 @@ DROP TABLE elemenat cascade CONSTRAINTS;
 
 DROP TABLE akcija cascade CONSTRAINTS;
 
+CREATE TABLE elemenat(
+    Ide integer,
+    ElementId VARCHAR(25) NOT NULL,
+    Naziv VARCHAR(25),
+    Tip VARCHAR(25),
+    GeografskaSirina FLOAT,
+    GeografskaDuzina FLOAT,
+    NaponskiNivo VARCHAR(20) DEFAULT 'Srednji napon',
+    constraint elemenat_PK primary key (ElementId)
+);
+
 CREATE TABLE kvar(
     Idk integer NOT NULL,
     KvarId VARCHAR(20) NOT NULL, 
@@ -16,16 +27,7 @@ CREATE TABLE kvar(
     constraint kvar_FK foreign key (ElektricniElement) references elemenat(ElementId)
 );
 
-CREATE TABLE elemenat(
-    Ide integer,
-    ElementId VARCHAR(25) NOT NULL,
-    Naziv VARCHAR(25),
-    Tip VARCHAR(25),
-    GeografskaSirina FLOAT,
-    GeografskaDuzina FLOAT,
-    NaponskiNivo VARCHAR(20) DEFAULT 'Srednji napon',
-    constraint elemenat_PK primary key (ElementId)
-);
+
 
 Create table akcija(
     Ida integer,
