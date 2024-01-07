@@ -8,10 +8,8 @@ namespace OMS.DAO
 {
     public interface ICRUDDAO<T, ID> 
     {
-        IEnumerable<T> FindAll();
 
-        IEnumerable<T> FindAllByDate();
-        T FindById(ID id);
-        int Save(T entity);
+       
+
     }
 }

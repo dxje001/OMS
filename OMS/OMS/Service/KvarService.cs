@@ -15,17 +15,34 @@ namespace OMS.Service
 
         public List<Kvar> FindBYDate()
         {
-            return kvarDao.FindAllByDate.ToList();
+            return kvarDao.FindAllByDate().ToList();
         }
 
-        public List<Kvar> FindAll()
+        public IEnumerable<Kvar> FindAll()
         {
+
             return kvarDao.FindAll().ToList();
         }
 
-        public Kvar FindById(string? id)
+     
+
+        public Kvar FindById(int id)
         {
             return kvarDao.FindById(id);
+        }
+
+        public int InsertNewKvar(Kvar k)
+        {
+            return kvarDao.Save(k);
+        }
+
+        public int GetCount(string date)
+        {
+            return kvarDao.GetCount(date);
+        }
+        public int Update(Kvar kvar)
+        {
+            return kvarDao.Update(kvar);
         }
     }
 }

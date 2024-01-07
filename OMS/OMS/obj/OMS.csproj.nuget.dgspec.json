@@ -44,9 +44,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Oracle.ManagedDataAccess": {
+            "EPPlus": {
               "target": "Package",
-              "version": "[21.12.0, )"
+              "version": "[7.0.5, )"
+            },
+            "Oracle.ManagedDataAccess.Core": {
+              "target": "Package",
+              "version": "[23.3.1-dev, )"
+            },
+            "itext7": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [

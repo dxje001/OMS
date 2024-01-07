@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace OMS.Classes
 {
     public class Kvar
     {
-        public int Id { get; set; }
+        public int Idk { get; set; }
         public string KvarId { get; set; }
         public DateTime VremeKreiranja { get; set; }
         public string Status { get; set; } = "Nepotvrđen";
@@ -17,11 +18,22 @@ namespace OMS.Classes
         public string OpisKvara { get; set; }
 
 
-        public Kvar() { }
+
+        public void ListAll()
+        {
+            Console.WriteLine(Idk + "  " +KvarId + "  " + VremeKreiranja + "  " + Status + "  " + KratakOpis + "  " + ElektricniElement + "  " + OpisKvara);
+        }
+
+        public static string GetFormattedHeaderx()
+        {
+            return string.Format("{0,-4} {1,-15} {2,-20} {3,-20} {4,-15} {5,-20} {6, -25}",
+                "Idk", "KvarId", "VremeKreiranja", "Status", "KratakOpis", "ElektricniElement", "OpisKvara");
+        }
+
 
         public Kvar(int id, string kvarId, DateTime vremeKreiranja, string status, string kratakOpis, string elektricniElement, string opisKvara)
         {
-            Id = id;
+            Idk = id;
             KvarId = kvarId;
             VremeKreiranja = vremeKreiranja;
             Status = status;
