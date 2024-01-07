@@ -43,14 +43,14 @@ namespace OMS.DAO.Impl
 
         public IEnumerable<Kvar> FindAllByDate()
         {
-            string query = "select idk, KvarId, VremeKreiranja, Status, KratakOpis, ElektricniElement, OpisKvara from kvar where VremeKreiranja between ':vremeKreiranja1' and ':vremekreiranja2'";
+            string query = "select idk, KvarId, VremeKreiranja, Status, KratakOpis, ElektricniElement, OpisKvara from kvar where VremeKreiranja between to_date(:vremekreiranja1) and  to_date(:vremekreiranja2)";
             List<Kvar> kvarList = new List<Kvar>();
             
-            Console.WriteLine("Unos prvog datuma (DD-MM-YY): ");
-            DateTime vreme1 =Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("Unos prvog datuma (DD-MM-YYYY): ");
+            string vreme1 =Console.ReadLine();
 
-            Console.WriteLine("Unos drugog datuma (DD-MM-YY): ");
-            DateTime vreme2 = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("Unos drugog datuma (DD-MM-YYYY): ");
+            string vreme2 = Console.ReadLine();
 
             using (IDbConnection connection = ConnectionUtil_Pooling.GetConnection())
             {
@@ -58,8 +58,8 @@ namespace OMS.DAO.Impl
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-                    ParameterUtil.AddParameter(command, "vremeKreiranja1", DbType.DateTime);
-                    ParameterUtil.AddParameter(command, "vremeKreiranja2", DbType.DateTime);
+                    ParameterUtil.AddParameter(command, "vremeKreiranja1", DbType.String);
+                    ParameterUtil.AddParameter(command, "vremeKreiranja2", DbType.String);
                     command.Prepare();
                     ParameterUtil.SetParameterValue(command, "vremeKreiranja1", vreme1);
                     ParameterUtil.SetParameterValue(command, "vremeKreiranja1", vreme2);
@@ -112,19 +112,19 @@ namespace OMS.DAO.Impl
             return kvar;
         }
 
-        public int GetCount(string date)
+        public int GetCount(string datesd)
         {
 
-            string query = "select count(*) from kvar where kvarid like ':date' || '%'";
+            string query = "select count(*) from kvar where kvarid like :datesd || '%'";
             using (IDbConnection connection = ConnectionUtil_Pooling.GetConnection())
             {
                 connection.Open();
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-                    ParameterUtil.AddParameter(command, "date", DbType.String);
+                    ParameterUtil.AddParameter(command, "datesd", DbType.String);
                     command.Prepare();
-                    ParameterUtil.SetParameterValue(command, "date", date);
+                    ParameterUtil.SetParameterValue(command, "datesd", datesd);
 
                     return Convert.ToInt32(command.ExecuteScalar());
                 }
@@ -166,6 +166,8 @@ namespace OMS.DAO.Impl
                 return Save(entity, connection);
             }
         }
+
+        
 
         private int Save(Kvar entity, IDbConnection connection)
         {

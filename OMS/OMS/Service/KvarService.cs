@@ -13,7 +13,7 @@ namespace OMS.Service
     {
         private static readonly IKvarDao kvarDao = new KvarDaoImpl();
 
-        public List<Kvar> FindBYDate()
+        public IEnumerable<Kvar> FindBYDate()
         {
             return kvarDao.FindAllByDate().ToList();
         }
@@ -44,5 +44,6 @@ namespace OMS.Service
         {
             return kvarDao.Update(kvar);
         }
+        
     }
 }

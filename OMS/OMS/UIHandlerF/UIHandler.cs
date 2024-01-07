@@ -184,9 +184,9 @@ namespace OMS.UIHandlerF
 
             try
             {
-                foreach (Kvar kvar in kvarService.FindBYDate())
+                foreach (Kvar kvar1 in kvarService.FindBYDate())
                 {
-                    kvar.ListAll();
+                    kvar1.ListAll();
                 }
             }
             catch (DbException ex)
@@ -213,7 +213,9 @@ namespace OMS.UIHandlerF
                 {
                     int broj = akcijaService.GetCount(kvar.KvarId);
                     string s1 = DateTime.Today.ToString("yyyyMMdd");
-                    string s2 = kvar.KvarId.Substring(8, kvar.KvarId.Length - 1);
+                    string s2 = kvar.KvarId.Substring(0, 8);
+
+                    
 
                     int s1b = Convert.ToInt32(s1);
                     int s2b = Convert.ToInt32(s2);
