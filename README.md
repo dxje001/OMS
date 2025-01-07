@@ -1,158 +1,49 @@
-Outage Management System (OMS)
+# Outage Management System (OMS)
 
-The Outage Management System (OMS) is an application designed for managing faults and planned operations in an electrical distribution network. It helps monitor and document interruptions caused by planned maintenance or unexpected failures.
+## Overview
 
-Key Features
+The Outage Management System (OMS) is a tool for managing faults and planned operations in an electrical distribution network. It tracks and records planned and unplanned interruptions to ensure efficient management and resolution.
 
-1. Fault Entry
+## Key Technologies
 
-Automatic Data Generation:
+- Programming Language: .NET (C#)
 
-Fault ID: Auto-generated as a combination of the timestamp and sequence number (format: yyyyMMddhhmmss_rb).
+- Database: MS SQL Server, Oracle, SQLite, or XML-based storage
 
-Creation Time: Automatically recorded and immutable.
+- Methodology: Agile/Scrum using Azure DevOps
 
-Status: Defaults to "Nepotvrđen" (Unconfirmed), with possible states:
+- Architecture: Adheres to SOLID principles and Clean Architecture
 
-"U popravci" (In Repair)
+- Testing: Comprehensive Unit Testing for reliability
 
-"Testiranje" (Testing)
+## How It Works
 
-"Zatvoreno" (Closed)
+1.  Fault Management:
 
-User-Entered Details:
+* Automatically generates unique Fault IDs and timestamps.
 
-Short description of the fault
+* Records details such as affected elements, descriptions, actions taken, and statuses (e.g., "In Repair").
 
-Electric element affected
+2.  Element Records:
 
-Detailed description of the problem
+* Stores details about electrical elements, including ID, type, location, and voltage levels.
 
-List of actions performed, including:
+3.  Priority Assignment:
 
-Action timestamp
+* Calculates fault priority based on the time since registration and actions performed.
 
-Description of work done
+4.  Document Export:
 
-2. Electric Element Records
+* Supports Excel, PDF, and CSV formats for fault and action summaries.
 
-Interface for Adding Elements:
+## SOLID Principles
 
-Details include:
+* Single Responsibility: Each class handles a specific aspect of fault or element management.
 
-Element ID
+* Open/Closed: Modules can be extended for new formats (e.g., additional export types) without modifying existing code.
 
-Name
+* Liskov Substitution: Interchangeable components ensure fault-tolerant behavior.
 
-Type
+* Interface Segregation: Interfaces are minimal and focused on specific functionalities.
 
-Geographic Location: Stored as coordinates
-
-Voltage Level: Defaults to "Medium Voltage," with options for "High Voltage" and "Low Voltage"
-
-Text-Based Storage for Element Types:
-
-Managed via text files (no interface required).
-
-3. Fault List Display
-
-Search and Filter:
-
-View faults within a specified time range.
-
-Display includes:
-
-Fault date
-
-Short description
-
-Status
-
-Fault Detail View:
-
-Update fault details unless the status is "Zatvoreno" (Closed).
-
-Priority Definition:
-
-If the status is "U popravci" (In Repair):
-
-Priority increases by 1 for each day since fault registration.
-
-Priority increases by 0.5 for each action performed.
-
-4. Document Generation
-
-Export Formats:
-
-Excel (default): Includes columns:
-
-Fault ID
-
-Element Name
-
-Voltage Level
-
-List of Actions
-
-Additional formats: PDF, CSV
-
-Technical Requirements
-
-Development Methodology
-
-Follows Agile/Scrum principles.
-
-Utilizes Azure DevOps for project management.
-
-Database
-
-Options:
-
-Relational Databases: MS SQL Server, Oracle
-
-Embedded Databases: SQLite, MS Access
-
-XML-based storage
-
-Code Principles
-
-Adheres to SOLID principles and Clean Architecture.
-
-Includes comprehensive Unit Tests to ensure reliability.
-
-Setup Instructions
-
-Prerequisites
-
-Development environment:
-
-IDE (e.g., Visual Studio, IntelliJ)
-
-Azure DevOps account
-
-Database setup:
-
-Choose and configure a compatible database system.
-
-Install dependencies:
-
-Ensure libraries/frameworks for PDF/Excel/CSV generation are installed.
-
-Running the Application
-
-Clone the repository:
-
-git clone <repository-url>
-
-Set up the database connection in the configuration file.
-
-Build and run the application:
-
-dotnet build
-dotnet run
-
-Testing
-
-Run unit tests:
-
-   dotnet test
+* Dependency Inversion: High-level modules depend on abstractions, not implementations.
